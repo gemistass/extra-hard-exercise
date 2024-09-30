@@ -1,8 +1,8 @@
 package com.intrasoft.benef1.beneficiaries;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-
 import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface BeneficiaryReposiroty extends MongoRepository<Beneficiary, String> {
 
