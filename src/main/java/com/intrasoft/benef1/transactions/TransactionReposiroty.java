@@ -1,4 +1,4 @@
-package com.intrasoft.benef1.TransactionHandler;
+package com.intrasoft.benef1.transactions;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
