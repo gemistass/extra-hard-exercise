@@ -1,4 +1,6 @@
-package com.intrasoft.benef1.beneficiaries;
+package com.intrasoft.extrahardexercise.account;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,15 +13,16 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
-public class BeneficiaryController {
+public class AccountController {
 
     @Autowired
-    BeneficiaryReposiroty beneficiaryRepository;
+    AccountReposiroty accountRepository;
 
-    @GetMapping("/beneficiaries/{id}")
-    Beneficiary one(@PathVariable String id) {
+    @GetMapping("/accounts/{id}")
+    Account one(@PathVariable String id) {
 
-        return beneficiaryRepository.findById(id).get();
+        return accountRepository.findById(id).get();
 
     }
+
 }

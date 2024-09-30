@@ -1,10 +1,10 @@
-package com.intrasoft.benef1;
+package com.intrasoft.extrahardexercise;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Benef1ApplicationTests {
+class extrahardexerciseApplicationTests {
 
 	@Test
 	void contextLoads() {

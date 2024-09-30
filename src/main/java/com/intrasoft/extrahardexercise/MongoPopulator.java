@@ -1,4 +1,4 @@
-package com.intrasoft.benef1;
+package com.intrasoft.extrahardexercise;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,12 +18,12 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
-import com.intrasoft.benef1.account.Account;
-import com.intrasoft.benef1.account.AccountReposiroty;
-import com.intrasoft.benef1.beneficiaries.Beneficiary;
-import com.intrasoft.benef1.beneficiaries.BeneficiaryReposiroty;
-import com.intrasoft.benef1.transactions.Transaction;
-import com.intrasoft.benef1.transactions.TransactionRepository;
+import com.intrasoft.extrahardexercise.account.Account;
+import com.intrasoft.extrahardexercise.account.AccountReposiroty;
+import com.intrasoft.extrahardexercise.beneficiaries.Beneficiary;
+import com.intrasoft.extrahardexercise.beneficiaries.BeneficiaryRepository;
+import com.intrasoft.extrahardexercise.transactions.Transaction;
+import com.intrasoft.extrahardexercise.transactions.TransactionRepository;
 
 @Configuration
 class MongoPopulator {
@@ -40,7 +40,7 @@ class MongoPopulator {
     private Resource transactionsResource;
 
     @Bean
-    CommandLineRunner initRepos(AccountReposiroty accountRepository, BeneficiaryReposiroty beneficiaryReposiroty,
+    CommandLineRunner initRepos(AccountReposiroty accountRepository, BeneficiaryRepository beneficiaryReposiroty,
             TransactionRepository transactionRepository) throws IOException {
 
         System.out.println("Clearing repositories...");
@@ -74,7 +74,7 @@ class MongoPopulator {
         }
     }
 
-    private void populateBeneficiaries(BeneficiaryReposiroty repository) throws IOException, FileNotFoundException {
+    private void populateBeneficiaries(BeneficiaryRepository repository) throws IOException, FileNotFoundException {
         File file = beneficiariesResource.getFile();
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {

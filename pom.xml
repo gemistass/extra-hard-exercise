@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.intrasoft</groupId>
-	<artifactId>benef1</artifactId>
+	<artifactId>extrahardexercise</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>benef1</name>
+	<name>extrahardexercise</name>
 	<description>Demo project for Spring Boot</description>
 	<url />
 	<licenses>

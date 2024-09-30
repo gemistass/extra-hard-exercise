@@ -1,4 +1,4 @@
-package com.intrasoft.benef1;
+package com.intrasoft.extrahardexercise;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

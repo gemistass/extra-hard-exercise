@@ -1,4 +1,4 @@
-package com.intrasoft.benef1.beneficiaries;
+package com.intrasoft.extrahardexercise.beneficiaries;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

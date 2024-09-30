@@ -1,4 +1,4 @@
-package com.intrasoft.benef1.account;
+package com.intrasoft.extrahardexercise.account;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
