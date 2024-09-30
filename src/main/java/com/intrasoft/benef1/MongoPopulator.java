@@ -17,8 +17,8 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
-import com.intrasoft.benef1.accountHandler.Account;
-import com.intrasoft.benef1.accountHandler.AccountReposiroty;
+import com.intrasoft.benef1.account.Account;
+import com.intrasoft.benef1.account.AccountReposiroty;
 
 @Configuration
 // @SuppressWarnings({ "all" })
@@ -77,5 +77,4 @@ class RestConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(Account.class);
 
     }
-
 }

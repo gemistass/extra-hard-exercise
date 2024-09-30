@@ -1,4 +1,4 @@
-package com.intrasoft.benef1.accountHandler;
+package com.intrasoft.benef1.account;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
