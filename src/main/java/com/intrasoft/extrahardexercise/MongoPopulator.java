@@ -120,11 +120,11 @@ class MongoPopulator {
 
                     repository.save(record);
                 } catch (NumberFormatException e) {
-                    System.err.println("Unhandled record");
+                    System.err.println("Invalid record. To be reprocessed...");
                     e.printStackTrace();
                     continue;
                 } catch (ParseException e) {
-                    System.err.println("Unhandled record");
+                    System.err.println("Invalid record. To be reprocessed...");
                     e.printStackTrace();
                     continue;
                 }
