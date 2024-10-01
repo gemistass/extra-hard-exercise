@@ -2,9 +2,12 @@ package com.intrasoft.extrahardexercise.transactions;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,29 +55,21 @@ public class TransactionController {
     }
 
     @GetMapping("/lastMonth")
-    Double findBiggestDepositByBeneficiaryId(@RequestParam int beneficiaryId) {
+    ResponseEntity<String> findBiggestDepositByBeneficiaryId(@RequestParam int beneficiaryId) throws JSONException {
 
-        // TransactionController transactionController = new TransactionController();
-        // //TODO remove circular dependency
-        System.err.println("-------------------------------------------------------------");
-
-        List<Transaction> transactions = transactionController
+        List<Transaction> transactionsByBeneficiaryId = transactionController
                 .findTransactionsByBeneficiaryId(beneficiaryId);
-        transactions.stream().map(transaction -> {
-            System.err.println("-------------------------------------------------------------");
-            System.err.println(System.currentTimeMillis());
-            System.err.println(transaction.getDate().getTime());
-            System.err.println(System.currentTimeMillis()
-                    - transaction.getDate().getTime());
-            return transaction;
-        }).filter(transaction -> transaction.getType().equals("deposit"));
-        // .filter(transaction -> (System.currentTimeMillis()
-        // - transaction.getDate().getTime()) > this.MONTH_DURATION_IN_MILLIS);
 
-        System.err.println(transactions);
-        System.err.println("length:" + transactions.size());
-        // map(Transaction::getAmount).reduce(0.0, Double::sum);
+        double max = transactionsByBeneficiaryId.stream()
+                .filter(transaction -> transaction.getType().equals("withdrawal"))
+                .filter(transaction -> (System.currentTimeMillis()
+                        - transaction.getDate().getTime()) < this.MONTH_DURATION_IN_MILLIS)
+                .map(Transaction::getAmount).reduce(0.0, Double::max);
 
-        return 0.1;
+        JSONObject response = new JSONObject();
+
+        response.put("beneficiaryId: ", beneficiaryId).put("max", max);
+
+        return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
     }
 }
