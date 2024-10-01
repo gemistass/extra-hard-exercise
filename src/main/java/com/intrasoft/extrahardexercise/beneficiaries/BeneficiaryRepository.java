@@ -8,4 +8,8 @@ public interface BeneficiaryRepository extends MongoRepository<Beneficiary, Inte
 
     List<Beneficiary> findByBeneficiaryId(int beneficiaryId);
 
+    Beneficiary findByFirstName(String firstName);
+
+    Beneficiary findByFirstNameAndLastName(String firstName, String lastName);
+
 }

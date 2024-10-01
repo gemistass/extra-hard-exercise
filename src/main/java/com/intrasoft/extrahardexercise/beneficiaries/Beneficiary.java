@@ -26,7 +26,7 @@ public class Beneficiary {
     public Beneficiary(int beneficiaryId, String firstName, String lastName) {
         this.beneficiaryId = beneficiaryId;
         this.firstName = firstName;
-        this.firstName = lastName;
+        this.lastName = lastName;
     }
 
     @Override
