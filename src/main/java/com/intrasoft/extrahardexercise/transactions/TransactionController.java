@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/transactions")
 @Slf4j
 public class TransactionController {
 
     @Autowired
     TransactionRepository transactionRepository;
 
-    @GetMapping("/transactions/{id}")
+    @GetMapping("/{id}")
     Transaction one(@PathVariable int id) {
 
         return transactionRepository.findById(id).get();

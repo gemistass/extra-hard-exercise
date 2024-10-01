@@ -1,5 +1,7 @@
 package com.intrasoft.extrahardexercise.transactions;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
@@ -10,7 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
+
 @Validated
 @Document(collection = "transactions")
 @Data
@@ -30,10 +32,8 @@ public class Transaction {
     private String type;
 
     @NotBlank(message = "date is mandatory")
-    @JsonFormat(pattern="MM-dd-yy")
+    @JsonFormat(pattern = "MM-dd-yy")
     private Date date;
-     
-    
 
     public Transaction(int transactionId, int accountId, float amount, String type, Date date) {
         this.transactionId = transactionId;
