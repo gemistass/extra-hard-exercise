@@ -46,14 +46,14 @@ public class BeneficiaryController {
     ResponseEntity<String> calculateBeneficiarySum(@RequestParam String firstName, @RequestParam String lastName)
             throws JSONException {
 
-        JSONObject response = new JSONObject();
         int beneficiaryId = findByFirstNameAndLastName(firstName, lastName).getBeneficiaryId();
 
         List<Transaction> transactions = transactionController
                 .findTransactionsByBeneficiaryId(beneficiaryId);
 
-        float beneficiarySum = transactions.stream().map(Transaction::getAmount).reduce(0.0f, Float::sum);
+        double beneficiarySum = transactions.stream().map(Transaction::getAmount).reduce(0.0, Double::sum);
 
+        JSONObject response = new JSONObject();
         response.put("beneficiary", firstName.concat(" " + lastName)).put("sum", beneficiarySum);
 
         return new ResponseEntity<String>(response.toString(), HttpStatus.OK);

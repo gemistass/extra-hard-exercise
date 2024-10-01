@@ -46,15 +46,15 @@ class MongoPopulator {
     CommandLineRunner initRepos(AccountRepository accountRepository, BeneficiaryRepository beneficiaryReposiroty,
             TransactionRepository transactionRepository) throws IOException {
 
-        // System.out.println("Clearing repositories...");
-        // clearRepository(accountRepository);
-        // clearRepository(beneficiaryReposiroty);
-        // clearRepository(transactionRepository);
+        System.out.println("Clearing repositories...");
+        clearRepository(accountRepository);
+        clearRepository(beneficiaryReposiroty);
+        clearRepository(transactionRepository);
 
-        // System.out.println("Populating accounts...");
-        // populateAccounts(accountRepository);
-        // populateBeneficiaries(beneficiaryReposiroty);
-        // populateTransactions(transactionRepository);
+        System.out.println("Populating accounts...");
+        populateAccounts(accountRepository);
+        populateBeneficiaries(beneficiaryReposiroty);
+        populateTransactions(transactionRepository);
 
         return args -> {
             log.info("Accounts populated successfully!");
@@ -112,7 +112,7 @@ class MongoPopulator {
 
                     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
                     Date date = formatter.parse(parsedRecord[4]);
-                    
+
                     Transaction record = new Transaction(Integer.parseInt(parsedRecord[0]),
                             Integer.parseInt(parsedRecord[1]),
                             Float.parseFloat(parsedRecord[2]),
@@ -136,7 +136,6 @@ class MongoPopulator {
     private <T> void clearRepository(MongoRepository<T, Integer> repository) {
         repository.deleteAll();
     }
-
 }
 
 @Component

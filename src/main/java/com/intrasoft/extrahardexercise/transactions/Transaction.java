@@ -25,7 +25,7 @@ public class Transaction {
     private int accountId;
 
     @NotBlank(message = "amount is mandatory")
-    private float amount;
+    private double amount;
 
     @NotBlank(message = "type is mandatory")
     @Pattern(regexp = "(withdrawal|deposit)$", message = "Invalid type. Accepted values:[withdrawal,deposit]")
