@@ -8,5 +8,6 @@ public interface AccountReposiroty extends MongoRepository<Account, Integer> {
 
     List<Account> findByAccountId(int accountId);
 
-    
+    List<Account> findByBeneficiaryId(int beneficiaryId);
+
 }

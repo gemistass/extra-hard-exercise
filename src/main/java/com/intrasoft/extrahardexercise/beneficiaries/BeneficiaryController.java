@@ -9,17 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/beneficiaries")
 @Slf4j
 public class BeneficiaryController {
 
     @Autowired
     BeneficiaryRepository beneficiaryRepository;
 
-    @GetMapping("/beneficiaries/{id}")
+    @GetMapping("/{id}")
     Beneficiary one(@PathVariable int id) {
 
         return beneficiaryRepository.findById(id).get();
 
     }
+
 }
