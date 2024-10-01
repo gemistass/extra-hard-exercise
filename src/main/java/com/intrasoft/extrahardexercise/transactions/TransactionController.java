@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intrasoft.extrahardexercise.account.Account;
-import com.intrasoft.extrahardexercise.account.AccountRepository;
+import com.intrasoft.extrahardexercise.accounts.Account;
+import com.intrasoft.extrahardexercise.accounts.AccountRepository;
 
 import lombok.extern.slf4j.Slf4j;
 

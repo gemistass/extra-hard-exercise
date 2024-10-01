@@ -21,8 +21,8 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
-import com.intrasoft.extrahardexercise.account.Account;
-import com.intrasoft.extrahardexercise.account.AccountRepository;
+import com.intrasoft.extrahardexercise.accounts.Account;
+import com.intrasoft.extrahardexercise.accounts.AccountRepository;
 import com.intrasoft.extrahardexercise.beneficiaries.Beneficiary;
 import com.intrasoft.extrahardexercise.beneficiaries.BeneficiaryRepository;
 import com.intrasoft.extrahardexercise.transactions.Transaction;

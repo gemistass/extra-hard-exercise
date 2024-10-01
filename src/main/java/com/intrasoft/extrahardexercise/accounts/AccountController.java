@@ -1,4 +1,4 @@
-package com.intrasoft.extrahardexercise.account;
+package com.intrasoft.extrahardexercise.accounts;
 
 import java.util.List;
 
