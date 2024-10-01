@@ -4,11 +4,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.util.Date;
 @Validated
 @Document(collection = "transactions")
 @Data
@@ -24,13 +26,16 @@ public class Transaction {
     private float amount;
 
     @NotBlank(message = "type is mandatory")
-    @Pattern(regexp="(withdrawal|deposit)$",message="Invalid type. Accepted values:[withdrawal,deposit]")
+    @Pattern(regexp = "(withdrawal|deposit)$", message = "Invalid type. Accepted values:[withdrawal,deposit]")
     private String type;
 
     @NotBlank(message = "date is mandatory")
-    private String date;
+    @JsonFormat(pattern="MM-dd-yy")
+    private Date date;
+     
+    
 
-    public Transaction(int transactionId, int accountId, float amount, String type, String date) {
+    public Transaction(int transactionId, int accountId, float amount, String type, Date date) {
         this.transactionId = transactionId;
         this.accountId = accountId;
         this.amount = amount;
@@ -45,6 +50,7 @@ public class Transaction {
                 ", accountId=" + accountId +
                 ", amount=" + amount +
                 ", type=" + type +
+                ", date=" + date +
                 '}';
     }
 }

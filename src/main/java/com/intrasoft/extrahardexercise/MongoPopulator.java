@@ -3,6 +3,9 @@ package com.intrasoft.extrahardexercise;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
@@ -64,12 +67,16 @@ class MongoPopulator {
     private void populateAccounts(AccountReposiroty repository) throws IOException, FileNotFoundException {
         File file = accountsResource.getFile();
         try (Scanner scanner = new Scanner(file)) {
+
             while (scanner.hasNextLine()) {
                 String[] parsedRecord = scanner.nextLine().split(",");
-                Account record = new Account(parsedRecord[0], parsedRecord[1]);
 
-                repository.save(record);
-
+                try {
+                    Account record = new Account(Integer.parseInt(parsedRecord[0]), Integer.parseInt(parsedRecord[1]));
+                    repository.save(record);
+                } catch (NumberFormatException e) {
+                    continue;
+                }
             }
         }
     }
@@ -79,10 +86,15 @@ class MongoPopulator {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String[] parsedRecord = scanner.nextLine().split(",");
-                // System.err.println(parsedRecord[0] );
-                Beneficiary record = new Beneficiary(parsedRecord[0], parsedRecord[1], parsedRecord[2]);
-                // System.err.println(record.toString());
-                repository.save(record);
+
+                try {
+                    Beneficiary record = new Beneficiary(Integer.parseInt(parsedRecord[0]),
+                            parsedRecord[1],
+                            parsedRecord[2]);
+                    repository.save(record);
+                } catch (NumberFormatException e) {
+                    continue;
+                }
 
             }
         } catch (Exception e) {
@@ -95,16 +107,33 @@ class MongoPopulator {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 String[] parsedRecord = scanner.nextLine().split(",");
-                Transaction record = new Transaction(parsedRecord[0], parsedRecord[1], parsedRecord[2],
-                        parsedRecord[3], parsedRecord[4]);
 
-                repository.save(record);
+                try {
+
+                    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+                    Date date = formatter.parse(parsedRecord[4]);
+                    
+                    Transaction record = new Transaction(Integer.parseInt(parsedRecord[0]),
+                            Integer.parseInt(parsedRecord[1]),
+                            Float.parseFloat(parsedRecord[2]),
+                            parsedRecord[3], date);
+
+                    repository.save(record);
+                } catch (NumberFormatException e) {
+                    System.err.println("Unhandled record");
+                    e.printStackTrace();
+                    continue;
+                } catch (ParseException e) {
+                    System.err.println("Unhandled record");
+                    e.printStackTrace();
+                    continue;
+                }
 
             }
         }
     }
 
-    private <T> void clearRepository(MongoRepository<T, String> repository) {
+    private <T> void clearRepository(MongoRepository<T, Integer> repository) {
         repository.deleteAll();
     }
 
