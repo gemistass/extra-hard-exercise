@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface BeneficiaryRepository extends MongoRepository<Beneficiary, String> {
+public interface BeneficiaryRepository extends MongoRepository<Beneficiary, Integer> {
 
-    List<Beneficiary> findByBeneficiaryId(String beneficiaryId);
+    List<Beneficiary> findByBeneficiaryId(int beneficiaryId);
 
 }

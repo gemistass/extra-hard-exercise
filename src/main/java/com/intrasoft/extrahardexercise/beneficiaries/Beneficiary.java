@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Beneficiary {
 
     @Id
-    private String beneficiaryId;
+    private int beneficiaryId;
 
     @NotBlank(message = "firstName is mandatory")
     private String firstName;
@@ -23,7 +23,7 @@ public class Beneficiary {
     @NotBlank(message = "lastName is mandatory")
     private String lastName;
 
-    public Beneficiary(String beneficiaryId, String firstName, String lastName) {
+    public Beneficiary(int beneficiaryId, String firstName, String lastName) {
         this.beneficiaryId = beneficiaryId;
         this.firstName = firstName;
         this.firstName = lastName;

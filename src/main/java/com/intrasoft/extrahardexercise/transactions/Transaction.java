@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,22 +15,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Transaction {
     @Id
-    private String transactionId;
+    private int transactionId;
 
     @NotBlank(message = "accountId is mandatory")
-    private String accountId;
+    private int accountId;
 
     @NotBlank(message = "amount is mandatory")
-    private String amount;
+    private float amount;
 
     @NotBlank(message = "type is mandatory")
-
+    @Pattern(regexp="(withdrawal|deposit)$",message="Invalid type. Accepted values:[withdrawal,deposit]")
     private String type;
 
     @NotBlank(message = "date is mandatory")
     private String date;
 
-    public Transaction(String transactionId, String accountId, String amount, String type, String date) {
+    public Transaction(int transactionId, int accountId, float amount, String type, String date) {
         this.transactionId = transactionId;
         this.accountId = accountId;
         this.amount = amount;

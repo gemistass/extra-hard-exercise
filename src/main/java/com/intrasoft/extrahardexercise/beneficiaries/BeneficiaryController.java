@@ -17,7 +17,7 @@ public class BeneficiaryController {
     BeneficiaryRepository beneficiaryRepository;
 
     @GetMapping("/beneficiaries/{id}")
-    Beneficiary one(@PathVariable String id) {
+    Beneficiary one(@PathVariable int id) {
 
         return beneficiaryRepository.findById(id).get();
 

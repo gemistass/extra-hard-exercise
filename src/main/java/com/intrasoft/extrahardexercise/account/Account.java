@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 public class Account {
 
     @Id
-    private String accountId;
+    private int accountId;
 
     @NotBlank(message = "beneficiaryId is mandatory")
-    private String beneficiaryId;
+    private int beneficiaryId;
 
-    public Account(String accountId, String beneficiaryId) {
+    public Account(int accountId, int beneficiaryId) {
         this.accountId = accountId;
         this.beneficiaryId = beneficiaryId;
     }

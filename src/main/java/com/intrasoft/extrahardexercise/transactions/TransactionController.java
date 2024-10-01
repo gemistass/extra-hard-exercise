@@ -1,6 +1,4 @@
-package com.intrasoft.extrahardexercise.account;
-
-
+package com.intrasoft.extrahardexercise.transactions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +11,15 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
-public class AccountController {
+public class TransactionController {
+
     @Autowired
-    AccountReposiroty accountRepository;
+    TransactionRepository transactionRepository;
 
-    @GetMapping("/accounts/{id}")
-    Account one(@PathVariable int id) {
+    @GetMapping("/transactions/{id}")
+    Transaction one(@PathVariable int id) {
 
-        return accountRepository.findById(id).get();
+        return transactionRepository.findById(id).get();
+
     }
 }
