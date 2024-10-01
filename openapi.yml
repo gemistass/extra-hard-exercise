@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: extraHard
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /ping:
+    get:
+      tags:
+        - default
+      summary: ping
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/accounts:
+    get:
+      tags:
+        - default
+      summary: accounts by beneficiaryId
+      parameters:
+        - name: beneficiaryId
+          in: query
+          schema:
+            type: integer
+          example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/transactions:
+    get:
+      tags:
+        - default
+      summary: transactions by beneficiaryId
+      parameters:
+        - name: beneficiaryId
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/beneficiaries/sum:
+    get:
+      tags:
+        - default
+      summary: sum by person
+      parameters:
+        - name: firstName
+          in: query
+          schema:
+            type: string
+          example: Elsie
+        - name: lastName
+          in: query
+          schema:
+            type: string
+          example: Myrilla
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/transactions/lastMonth:
+    get:
+      tags:
+        - default
+      summary: max by beneficiary at last month
+      parameters:
+        - name: beneficiaryId
+          in: query
+          schema:
+            type: integer
+          example: '373'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
