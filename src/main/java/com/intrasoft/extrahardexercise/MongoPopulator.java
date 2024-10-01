@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.intrasoft.extrahardexercise.account.Account;
-import com.intrasoft.extrahardexercise.account.AccountReposiroty;
+import com.intrasoft.extrahardexercise.account.AccountRepository;
 import com.intrasoft.extrahardexercise.beneficiaries.Beneficiary;
 import com.intrasoft.extrahardexercise.beneficiaries.BeneficiaryRepository;
 import com.intrasoft.extrahardexercise.transactions.Transaction;
@@ -43,18 +43,18 @@ class MongoPopulator {
     private Resource transactionsResource;
 
     @Bean
-    CommandLineRunner initRepos(AccountReposiroty accountRepository, BeneficiaryRepository beneficiaryReposiroty,
+    CommandLineRunner initRepos(AccountRepository accountRepository, BeneficiaryRepository beneficiaryReposiroty,
             TransactionRepository transactionRepository) throws IOException {
 
-        System.out.println("Clearing repositories...");
-        clearRepository(accountRepository);
-        clearRepository(beneficiaryReposiroty);
-        clearRepository(transactionRepository);
+        // System.out.println("Clearing repositories...");
+        // clearRepository(accountRepository);
+        // clearRepository(beneficiaryReposiroty);
+        // clearRepository(transactionRepository);
 
-        System.out.println("Populating accounts...");
-        populateAccounts(accountRepository);
-        populateBeneficiaries(beneficiaryReposiroty);
-        populateTransactions(transactionRepository);
+        // System.out.println("Populating accounts...");
+        // populateAccounts(accountRepository);
+        // populateBeneficiaries(beneficiaryReposiroty);
+        // populateTransactions(transactionRepository);
 
         return args -> {
             log.info("Accounts populated successfully!");
@@ -64,7 +64,7 @@ class MongoPopulator {
         };
     }
 
-    private void populateAccounts(AccountReposiroty repository) throws IOException, FileNotFoundException {
+    private void populateAccounts(AccountRepository repository) throws IOException, FileNotFoundException {
         File file = accountsResource.getFile();
         try (Scanner scanner = new Scanner(file)) {
 

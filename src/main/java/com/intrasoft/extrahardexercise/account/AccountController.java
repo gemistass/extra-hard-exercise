@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AccountController {
     @Autowired
-    AccountReposiroty accountRepository;
+    AccountRepository accountRepository;
 
     @GetMapping("/{id}")
     Account one(@PathVariable int id) {
@@ -25,7 +25,7 @@ public class AccountController {
     }
 
     @GetMapping("")
-    List<Account> getAccountsByBeneficiaryId(@RequestParam int beneficiaryId) {
+    public List<Account> getAccountsByBeneficiaryId(@RequestParam int beneficiaryId) {
 
         return accountRepository.findByBeneficiaryId(beneficiaryId);
     }
