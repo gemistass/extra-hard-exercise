@@ -1,6 +1,6 @@
-# intra-soft-exercise
 
-Simple API for storing and retrieving accounts, beneficiaries and transactions from mongodb
+
+### Simple API for storing and retrieving accounts, beneficiaries and transactions from mongodb
 
 ## Included
 - postman collection for easy testing
