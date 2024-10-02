@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +53,7 @@ public class TransactionController {
     }
 
     @GetMapping("/lastMonth")
-    ResponseEntity<String> findBiggestDepositByBeneficiaryId(@RequestParam int beneficiaryId) throws JSONException {
+    ResponseEntity<Double> findBiggestDepositByBeneficiaryId(@RequestParam int beneficiaryId) {
 
         List<Transaction> transactionsByBeneficiaryId = transactionController
                 .findTransactionsByBeneficiaryId(beneficiaryId);
@@ -66,10 +64,6 @@ public class TransactionController {
                         - transaction.getDate().getTime()) < this.MONTH_DURATION_IN_MILLIS)
                 .map(Transaction::getAmount).reduce(0.0, Double::max);
 
-        JSONObject response = new JSONObject();
-
-        response.put("beneficiaryId: ", beneficiaryId).put("max", max);
-
-        return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
+        return new ResponseEntity<Double>(max, HttpStatus.OK);
     }
 }

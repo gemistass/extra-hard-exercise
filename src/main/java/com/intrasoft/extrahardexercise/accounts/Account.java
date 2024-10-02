@@ -1,7 +1,5 @@
 package com.intrasoft.extrahardexercise.accounts;
 
-
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;

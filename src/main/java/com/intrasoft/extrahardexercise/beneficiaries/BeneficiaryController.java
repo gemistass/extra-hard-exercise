@@ -3,8 +3,6 @@ package com.intrasoft.extrahardexercise.beneficiaries;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,8 +41,7 @@ public class BeneficiaryController {
     }
 
     @GetMapping("/sum")
-    ResponseEntity<String> calculateBeneficiarySum(@RequestParam String firstName, @RequestParam String lastName)
-            throws JSONException {
+    ResponseEntity<Double> calculateBeneficiarySum(@RequestParam String firstName, @RequestParam String lastName) {
 
         int beneficiaryId = findByFirstNameAndLastName(firstName, lastName).getBeneficiaryId();
 
@@ -53,10 +50,7 @@ public class BeneficiaryController {
 
         double beneficiarySum = transactions.stream().map(Transaction::getAmount).reduce(0.0, Double::sum);
 
-        JSONObject response = new JSONObject();
-        response.put("beneficiary", firstName.concat(" " + lastName)).put("sum", beneficiarySum);
-
-        return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
+        return new ResponseEntity<Double>(beneficiarySum, HttpStatus.OK);
 
     }
 

@@ -117,7 +117,7 @@ class MongoPopulator {
                             Integer.parseInt(parsedRecord[1]),
                             Double.parseDouble(parsedRecord[2]),
                             parsedRecord[3], date);
-                    
+
                     repository.save(record);
                 } catch (NumberFormatException e) {
                     System.err.println("Invalid record. To be reprocessed...");
