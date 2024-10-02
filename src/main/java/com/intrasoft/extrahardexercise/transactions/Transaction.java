@@ -35,7 +35,7 @@ public class Transaction {
     @JsonFormat(pattern = "MM-dd-yy")
     private Date date;
 
-    public Transaction(int transactionId, int accountId, float amount, String type, Date date) {
+    public Transaction(int transactionId, int accountId, double amount, String type, Date date) {
         this.transactionId = transactionId;
         this.accountId = accountId;
         this.amount = amount;

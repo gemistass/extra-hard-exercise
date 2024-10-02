@@ -115,9 +115,9 @@ class MongoPopulator {
 
                     Transaction record = new Transaction(Integer.parseInt(parsedRecord[0]),
                             Integer.parseInt(parsedRecord[1]),
-                            Float.parseFloat(parsedRecord[2]),
+                            Double.parseDouble(parsedRecord[2]),
                             parsedRecord[3], date);
-
+                    
                     repository.save(record);
                 } catch (NumberFormatException e) {
                     System.err.println("Invalid record. To be reprocessed...");
