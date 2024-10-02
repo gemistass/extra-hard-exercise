@@ -1,6 +1,6 @@
 # intra-soft-exercise
 
-Simple API for storing and retrieving accounts, beneficiaries and transaction from mongo db
+Simple API for storing and retrieving accounts, beneficiaries and transactions from mongodb
 
 ## Included
 - postman collection for easy testing
@@ -11,10 +11,19 @@ Simple API for storing and retrieving accounts, beneficiaries and transaction fr
 
 ## requirements
 - active mongod service 
-- free port 2701
+- free port 27017
 - default mongo, without username and password (configurable in properties)
 
-### Developed and tested on
+## mongoshell
+```
+➜  ~ mongosh 
+> show dbs
+> use test
+> db.accounts.find()
+> db.beneficiaries.find()
+> db.transactions.find()
+```
+## Developed and tested on
 
 - Java version: 21.0.4  runtime:java-21-openjdk-amd64
 - Apache Maven 3.6.3
@@ -23,3 +32,7 @@ Simple API for storing and retrieving accounts, beneficiaries and transaction fr
 - Ubuntu 22.04.5 LTS jammy
 - vscode 1.93.1
 
+## Run Spring Boot application
+```
+mvn spring-boot:run
+```
